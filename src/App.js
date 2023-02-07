@@ -8,11 +8,13 @@ const App = () => {
   const [darkTheme, setDarkTheme] = useState(false);
 
   return (
-    <h1 className={darkTheme ? "dark" : ""}>
-      <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme}/>
+    <div className={darkTheme ? 'dark' : ''}>
+      <div className="dark:bg-gray-900 bg-gray-100 dark:text-gray-200 black min-h-screen">
+        <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
       <Routes />
       <Footer />
-    </h1>
+      </div>
+    </div>
   );
 };
 
