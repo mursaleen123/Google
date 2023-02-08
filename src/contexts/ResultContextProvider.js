@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { children, createContext, useContext, useState } from "react";
 
 const ResultContext = createContext();
 
@@ -19,5 +19,20 @@ export const ResultContextProvider = () => {
         "X-RapidAPI-Host": "google-search72.p.rapidapi.com",
       },
     });
-  };
+    
+    const data = await response.json();
+    console.log(data);
+    setResults(data);
+
+    setIsLoading(false);
+
+  }
+
+  return (
+    <ResultContext.Provider value={{getResults,results,searchItem,setSearchItem,isLoading}}>
+        {children}
+    </ResultContext.Provider>
+  );
 };
+
+export const useResultContext = () => useContext(ResultContext); 
